@@ -1,0 +1,3 @@
+[submodule "cloud/sfc-random"]
+	path = cloud/sfc-random
+	url = https://github.com/trozet/sfc-random.git
