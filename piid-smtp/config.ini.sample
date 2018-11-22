@@ -1,0 +1,11 @@
+[ports]
+smtp=25, 110, 143
+http=8080
+[network]
+ifname=listening_network_interface_name
+[models]
+spacy_model=en_core_web_md
+reference_words=name,address,email,number
+word_similarity_threshold=0.80
+top_k=0
+reference_entities=PERSON,MONEY,WORK_OF_ART
