@@ -3,3 +3,4 @@
 *.ini
 *.pyc
 *.db
+.idea
