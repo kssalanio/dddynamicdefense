@@ -1,0 +1,74 @@
+---
+nodes:
+  node1:
+    mac_address: "0c:c4:7a:d4:ee:7a"
+    ipmi_ip: 10.158.2.181
+    ipmi_user: ADMIN
+    ipmi_pass: ADMIN
+    pm_type: "pxe_ipmitool"
+    cpus: 24
+    memory: 131072
+    disk: 7000
+    disk_device: sda
+    arch: "x86_64"
+    capabilities: "profile:control"
+  node2:
+    mac_address: "0c:c4:7a:84:6d:34"
+    ipmi_ip: 10.158.2.165
+    ipmi_user: ADMIN
+    ipmi_pass: ADMIN
+    pm_type: "pxe_ipmitool"
+    cpus: 8
+    memory: 16384
+    disk: 4000
+    disk_device: sdc,sdd
+    arch: "x86_64"
+    capabilities: "profile:compute"
+  node3:
+    mac_address: "0c:c4:7a:83:43:a4"
+    ipmi_ip: 10.158.2.166
+    ipmi_user: ADMIN
+    ipmi_pass: ADMIN
+    pm_type: "pxe_ipmitool"
+    cpus: 8
+    memory: 16384
+    disk: 4000
+    disk_device: sdc,sdd
+    arch: "x86_64"
+    capabilities: "profile:compute"
+  node4:
+    mac_address: "0c:c4:7a:84:68:ec"
+    ipmi_ip: 10.158.2.167
+    ipmi_user: ADMIN
+    ipmi_pass: ADMIN
+    pm_type: "pxe_ipmitool"
+    cpus: 8
+    memory: 16384
+    disk: 4000
+    disk_device: sdc,sdd
+    arch: "x86_64"
+    capabilities: "profile:compute"
+  node5:
+    mac_address: "0c:c4:7a:85:c4:80"
+    ipmi_ip: 10.158.2.168
+    ipmi_user: ADMIN
+    ipmi_pass: ADMIN
+    pm_type: "pxe_ipmitool"
+    cpus: 8
+    memory: 16384
+    disk: 4000
+    disk_device: sdc,sdd
+    arch: "x86_64"
+    capabilities: "profile:compute"
+  node6:
+    mac_address: "0c:c4:7a:84:6c:70"
+    ipmi_ip: 10.158.2.169
+    ipmi_user: ADMIN
+    ipmi_pass: ADMIN
+    pm_type: "pxe_ipmitool"
+    cpus: 8
+    memory: 16384
+    disk: 4000
+    disk_device: sdc,sdd
+    arch: "x86_64"
+    capabilities: "profile:compute"

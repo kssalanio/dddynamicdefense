@@ -1,0 +1,266 @@
+11/06/2018 09:36:07 AM INFO: Destroying all Apex VMs
+11/06/2018 09:36:23 AM INFO: Destroying all Apex VMs
+11/06/2018 02:04:13 PM INFO: Destroying all Apex VMs
+11/06/2018 02:04:13 PM INFO: Cleaning domain: undercloud
+11/06/2018 02:04:13 PM DEBUG: Destroying domain
+11/06/2018 02:04:17 PM INFO: Deleting storage volume
+11/06/2018 02:04:18 PM DEBUG: Cleaning all network config
+11/06/2018 02:04:18 PM INFO: Cleaning Jump Host Network config for network admin
+11/06/2018 02:04:18 PM DEBUG: Detaching interfaces from bridge on network: admin
+11/06/2018 02:04:19 PM DEBUG: Bridge br-admin found
+11/06/2018 02:04:19 PM DEBUG: Interface found: enp1s0
+11/06/2018 02:04:19 PM DEBUG: Original interface file found: /etc/sysconfig/network-scripts/ifcfg-enp1s0.orig
+11/06/2018 02:04:19 PM INFO: Restarting Linux networking
+11/06/2018 02:04:26 PM DEBUG: Bridge br-admin found
+11/06/2018 02:04:26 PM INFO: Removing bridge: br-admin
+11/06/2018 02:04:26 PM DEBUG: Bridge destroyed
+11/06/2018 02:04:26 PM DEBUG: Bridge ifcfg file removed: /etc/sysconfig/network-scripts/ifcfg-br-admin
+11/06/2018 02:04:26 PM INFO: Cleaning Jump Host Network config for network tenant
+11/06/2018 02:04:26 PM DEBUG: Detaching interfaces from bridge on network: tenant
+11/06/2018 02:04:26 PM DEBUG: Bridge br-tenant found
+11/06/2018 02:04:26 PM INFO: No jumphost interface exists on bridge br-tenant
+11/06/2018 02:04:26 PM DEBUG: Bridge br-tenant found
+11/06/2018 02:04:26 PM INFO: Removing bridge: br-tenant
+11/06/2018 02:04:26 PM DEBUG: Bridge destroyed
+11/06/2018 02:04:26 PM DEBUG: Bridge ifcfg file not found
+11/06/2018 02:04:26 PM INFO: Cleaning Jump Host Network config for network external
+11/06/2018 02:04:26 PM DEBUG: Detaching interfaces from bridge on network: external
+11/06/2018 02:04:26 PM DEBUG: Bridge br-external found
+11/06/2018 02:04:26 PM DEBUG: Interface found: enp2s0
+11/06/2018 02:04:26 PM DEBUG: Original interface file found: /etc/sysconfig/network-scripts/ifcfg-enp2s0.orig
+11/06/2018 02:04:26 PM INFO: Restarting Linux networking
+11/06/2018 02:04:27 PM DEBUG: Bridge br-external found
+11/06/2018 02:04:27 PM INFO: Removing bridge: br-external
+11/06/2018 02:04:28 PM DEBUG: Bridge destroyed
+11/06/2018 02:04:28 PM DEBUG: Bridge ifcfg file removed: /etc/sysconfig/network-scripts/ifcfg-br-external
+11/06/2018 02:04:28 PM INFO: Cleaning Jump Host Network config for network storage
+11/06/2018 02:04:28 PM DEBUG: Detaching interfaces from bridge on network: storage
+11/06/2018 02:04:28 PM DEBUG: Bridge br-storage found
+11/06/2018 02:04:28 PM INFO: No jumphost interface exists on bridge br-storage
+11/06/2018 02:04:28 PM DEBUG: Bridge br-storage found
+11/06/2018 02:04:28 PM INFO: Removing bridge: br-storage
+11/06/2018 02:04:28 PM DEBUG: Bridge destroyed
+11/06/2018 02:04:28 PM DEBUG: Bridge ifcfg file not found
+11/06/2018 02:04:28 PM INFO: Cleaning Jump Host Network config for network api
+11/06/2018 02:04:28 PM DEBUG: Detaching interfaces from bridge on network: api
+11/06/2018 02:04:28 PM DEBUG: Bridge br-api not found
+11/06/2018 02:04:28 PM DEBUG: Bridge br-api not found
+11/06/2018 02:04:28 PM DEBUG: Destroying all virsh networks
+11/06/2018 02:04:28 PM DEBUG: Destroying virsh network: tenant
+11/06/2018 02:04:28 PM DEBUG: Destroying virsh network: external
+11/06/2018 02:04:28 PM DEBUG: Destroying virsh network: storage
+11/06/2018 02:04:28 PM DEBUG: Destroying virsh network: admin
+11/06/2018 02:04:28 PM INFO: Removing any stack pub keys from root authorized keys
+11/06/2018 02:04:28 PM WARNING: Key file does not exist: 
+11/06/2018 02:04:28 PM INFO: Apex clean complete!
+11/08/2018 05:17:31 AM INFO: Destroying all Apex VMs
+11/08/2018 05:17:31 AM INFO: Cleaning domain: undercloud
+11/08/2018 05:17:31 AM DEBUG: Destroying domain
+11/08/2018 05:17:33 AM INFO: Deleting storage volume
+11/08/2018 05:17:35 AM DEBUG: Cleaning all network config
+11/08/2018 05:17:35 AM INFO: Cleaning Jump Host Network config for network admin
+11/08/2018 05:17:35 AM DEBUG: Detaching interfaces from bridge on network: admin
+11/08/2018 05:17:35 AM DEBUG: Bridge br-admin found
+11/08/2018 05:17:35 AM DEBUG: Interface found: enp1s0
+11/08/2018 05:17:35 AM DEBUG: Original interface file found: /etc/sysconfig/network-scripts/ifcfg-enp1s0.orig
+11/08/2018 05:17:35 AM INFO: Restarting Linux networking
+11/08/2018 05:17:43 AM DEBUG: Bridge br-admin found
+11/08/2018 05:17:43 AM INFO: Removing bridge: br-admin
+11/08/2018 05:17:43 AM DEBUG: Bridge destroyed
+11/08/2018 05:17:44 AM DEBUG: Bridge ifcfg file removed: /etc/sysconfig/network-scripts/ifcfg-br-admin
+11/08/2018 05:17:44 AM INFO: Cleaning Jump Host Network config for network tenant
+11/08/2018 05:17:44 AM DEBUG: Detaching interfaces from bridge on network: tenant
+11/08/2018 05:17:44 AM DEBUG: Bridge br-tenant found
+11/08/2018 05:17:44 AM INFO: No jumphost interface exists on bridge br-tenant
+11/08/2018 05:17:44 AM DEBUG: Bridge br-tenant found
+11/08/2018 05:17:44 AM INFO: Removing bridge: br-tenant
+11/08/2018 05:17:44 AM DEBUG: Bridge destroyed
+11/08/2018 05:17:44 AM DEBUG: Bridge ifcfg file not found
+11/08/2018 05:17:44 AM INFO: Cleaning Jump Host Network config for network external
+11/08/2018 05:17:44 AM DEBUG: Detaching interfaces from bridge on network: external
+11/08/2018 05:17:44 AM DEBUG: Bridge br-external found
+11/08/2018 05:17:44 AM DEBUG: Interface found: enp2s0
+11/08/2018 05:17:44 AM DEBUG: Original interface file found: /etc/sysconfig/network-scripts/ifcfg-enp2s0.orig
+11/08/2018 05:17:44 AM INFO: Restarting Linux networking
+11/08/2018 05:17:46 AM DEBUG: Bridge br-external found
+11/08/2018 05:17:46 AM INFO: Removing bridge: br-external
+11/08/2018 05:17:46 AM DEBUG: Bridge destroyed
+11/08/2018 05:17:46 AM DEBUG: Bridge ifcfg file removed: /etc/sysconfig/network-scripts/ifcfg-br-external
+11/08/2018 05:17:46 AM INFO: Cleaning Jump Host Network config for network storage
+11/08/2018 05:17:46 AM DEBUG: Detaching interfaces from bridge on network: storage
+11/08/2018 05:17:46 AM DEBUG: Bridge br-storage found
+11/08/2018 05:17:46 AM INFO: No jumphost interface exists on bridge br-storage
+11/08/2018 05:17:46 AM DEBUG: Bridge br-storage found
+11/08/2018 05:17:46 AM INFO: Removing bridge: br-storage
+11/08/2018 05:17:46 AM DEBUG: Bridge destroyed
+11/08/2018 05:17:46 AM DEBUG: Bridge ifcfg file not found
+11/08/2018 05:17:46 AM INFO: Cleaning Jump Host Network config for network api
+11/08/2018 05:17:46 AM DEBUG: Detaching interfaces from bridge on network: api
+11/08/2018 05:17:46 AM DEBUG: Bridge br-api not found
+11/08/2018 05:17:46 AM DEBUG: Bridge br-api not found
+11/08/2018 05:17:47 AM DEBUG: Destroying all virsh networks
+11/08/2018 05:17:47 AM DEBUG: Destroying virsh network: storage
+11/08/2018 05:17:47 AM DEBUG: Destroying virsh network: tenant
+11/08/2018 05:17:47 AM DEBUG: Destroying virsh network: external
+11/08/2018 05:17:47 AM DEBUG: Destroying virsh network: admin
+11/08/2018 05:17:47 AM INFO: Removing any stack pub keys from root authorized keys
+11/08/2018 05:17:47 AM WARNING: Key file does not exist: 
+11/08/2018 05:17:47 AM INFO: Apex clean complete!
+11/08/2018 06:45:18 AM INFO: Destroying all Apex VMs
+11/08/2018 06:45:18 AM INFO: Cleaning domain: undercloud
+11/08/2018 06:45:18 AM DEBUG: Destroying domain
+11/08/2018 06:45:21 AM INFO: Deleting storage volume
+11/08/2018 06:45:23 AM DEBUG: Cleaning all network config
+11/08/2018 06:45:23 AM INFO: Cleaning Jump Host Network config for network admin
+11/08/2018 06:45:23 AM DEBUG: Detaching interfaces from bridge on network: admin
+11/08/2018 06:45:23 AM DEBUG: Bridge br-admin found
+11/08/2018 06:45:23 AM DEBUG: Interface found: enp1s0
+11/08/2018 06:45:23 AM DEBUG: Original interface file found: /etc/sysconfig/network-scripts/ifcfg-enp1s0.orig
+11/08/2018 06:45:23 AM INFO: Restarting Linux networking
+11/08/2018 06:45:31 AM DEBUG: Bridge br-admin found
+11/08/2018 06:45:31 AM INFO: Removing bridge: br-admin
+11/08/2018 06:45:31 AM DEBUG: Bridge destroyed
+11/08/2018 06:45:31 AM DEBUG: Bridge ifcfg file removed: /etc/sysconfig/network-scripts/ifcfg-br-admin
+11/08/2018 06:45:31 AM INFO: Cleaning Jump Host Network config for network tenant
+11/08/2018 06:45:31 AM DEBUG: Detaching interfaces from bridge on network: tenant
+11/08/2018 06:45:31 AM DEBUG: Bridge br-tenant found
+11/08/2018 06:45:31 AM INFO: No jumphost interface exists on bridge br-tenant
+11/08/2018 06:45:31 AM DEBUG: Bridge br-tenant found
+11/08/2018 06:45:31 AM INFO: Removing bridge: br-tenant
+11/08/2018 06:45:31 AM DEBUG: Bridge destroyed
+11/08/2018 06:45:31 AM DEBUG: Bridge ifcfg file not found
+11/08/2018 06:45:31 AM INFO: Cleaning Jump Host Network config for network external
+11/08/2018 06:45:31 AM DEBUG: Detaching interfaces from bridge on network: external
+11/08/2018 06:45:31 AM DEBUG: Bridge br-external found
+11/08/2018 06:45:31 AM DEBUG: Interface found: enp2s0
+11/08/2018 06:45:31 AM DEBUG: Original interface file found: /etc/sysconfig/network-scripts/ifcfg-enp2s0.orig
+11/08/2018 06:45:31 AM INFO: Restarting Linux networking
+11/08/2018 06:45:32 AM DEBUG: Bridge br-external found
+11/08/2018 06:45:32 AM INFO: Removing bridge: br-external
+11/08/2018 06:45:32 AM DEBUG: Bridge destroyed
+11/08/2018 06:45:32 AM DEBUG: Bridge ifcfg file removed: /etc/sysconfig/network-scripts/ifcfg-br-external
+11/08/2018 06:45:32 AM INFO: Cleaning Jump Host Network config for network storage
+11/08/2018 06:45:32 AM DEBUG: Detaching interfaces from bridge on network: storage
+11/08/2018 06:45:32 AM DEBUG: Bridge br-storage found
+11/08/2018 06:45:32 AM INFO: No jumphost interface exists on bridge br-storage
+11/08/2018 06:45:32 AM DEBUG: Bridge br-storage found
+11/08/2018 06:45:32 AM INFO: Removing bridge: br-storage
+11/08/2018 06:45:33 AM DEBUG: Bridge destroyed
+11/08/2018 06:45:33 AM DEBUG: Bridge ifcfg file not found
+11/08/2018 06:45:33 AM INFO: Cleaning Jump Host Network config for network api
+11/08/2018 06:45:33 AM DEBUG: Detaching interfaces from bridge on network: api
+11/08/2018 06:45:33 AM DEBUG: Bridge br-api not found
+11/08/2018 06:45:33 AM DEBUG: Bridge br-api not found
+11/08/2018 06:45:33 AM DEBUG: Destroying all virsh networks
+11/08/2018 06:45:33 AM DEBUG: Destroying virsh network: tenant
+11/08/2018 06:45:33 AM DEBUG: Destroying virsh network: admin
+11/08/2018 06:45:33 AM DEBUG: Destroying virsh network: storage
+11/08/2018 06:45:33 AM DEBUG: Destroying virsh network: external
+11/08/2018 06:45:33 AM INFO: Removing any stack pub keys from root authorized keys
+11/08/2018 06:45:33 AM WARNING: Key file does not exist: 
+11/08/2018 06:45:33 AM INFO: Apex clean complete!
+11/08/2018 06:48:35 AM INFO: Destroying all Apex VMs
+11/08/2018 06:48:35 AM DEBUG: Cleaning all network config
+11/08/2018 06:48:35 AM INFO: Cleaning Jump Host Network config for network admin
+11/08/2018 06:48:35 AM DEBUG: Detaching interfaces from bridge on network: admin
+11/08/2018 06:48:35 AM DEBUG: Bridge br-admin not found
+11/08/2018 06:48:35 AM DEBUG: Bridge br-admin not found
+11/08/2018 06:48:35 AM INFO: Cleaning Jump Host Network config for network tenant
+11/08/2018 06:48:36 AM DEBUG: Detaching interfaces from bridge on network: tenant
+11/08/2018 06:48:36 AM DEBUG: Bridge br-tenant not found
+11/08/2018 06:48:36 AM DEBUG: Bridge br-tenant not found
+11/08/2018 06:48:36 AM INFO: Cleaning Jump Host Network config for network external
+11/08/2018 06:48:36 AM DEBUG: Detaching interfaces from bridge on network: external
+11/08/2018 06:48:36 AM DEBUG: Bridge br-external not found
+11/08/2018 06:48:36 AM DEBUG: Bridge br-external not found
+11/08/2018 06:48:36 AM INFO: Cleaning Jump Host Network config for network storage
+11/08/2018 06:48:36 AM DEBUG: Detaching interfaces from bridge on network: storage
+11/08/2018 06:48:36 AM DEBUG: Bridge br-storage not found
+11/08/2018 06:48:36 AM DEBUG: Bridge br-storage not found
+11/08/2018 06:48:36 AM INFO: Cleaning Jump Host Network config for network api
+11/08/2018 06:48:36 AM DEBUG: Detaching interfaces from bridge on network: api
+11/08/2018 06:48:36 AM DEBUG: Bridge br-api not found
+11/08/2018 06:48:36 AM DEBUG: Bridge br-api not found
+11/08/2018 06:48:36 AM DEBUG: Destroying all virsh networks
+11/08/2018 06:48:36 AM INFO: Removing any stack pub keys from root authorized keys
+11/08/2018 06:48:36 AM WARNING: Key file does not exist: 
+11/08/2018 06:48:36 AM INFO: Apex clean complete!
+11/08/2018 03:11:04 PM INFO: Destroying all Apex VMs
+11/08/2018 03:11:04 PM INFO: Cleaning domain: undercloud
+11/08/2018 03:11:04 PM DEBUG: Destroying domain
+11/08/2018 03:11:07 PM INFO: Deleting storage volume
+11/08/2018 03:11:09 PM DEBUG: Cleaning all network config
+11/08/2018 03:11:09 PM INFO: Cleaning Jump Host Network config for network admin
+11/08/2018 03:11:09 PM DEBUG: Detaching interfaces from bridge on network: admin
+11/08/2018 03:11:09 PM DEBUG: Bridge br-admin found
+11/08/2018 03:11:09 PM DEBUG: Interface found: enp1s0
+11/08/2018 03:11:09 PM DEBUG: Original interface file found: /etc/sysconfig/network-scripts/ifcfg-enp1s0.orig
+11/08/2018 03:11:09 PM INFO: Restarting Linux networking
+11/08/2018 03:11:17 PM DEBUG: Bridge br-admin found
+11/08/2018 03:11:17 PM INFO: Removing bridge: br-admin
+11/08/2018 03:11:17 PM DEBUG: Bridge destroyed
+11/08/2018 03:11:17 PM DEBUG: Bridge ifcfg file removed: /etc/sysconfig/network-scripts/ifcfg-br-admin
+11/08/2018 03:11:17 PM INFO: Cleaning Jump Host Network config for network tenant
+11/08/2018 03:11:17 PM DEBUG: Detaching interfaces from bridge on network: tenant
+11/08/2018 03:11:17 PM DEBUG: Bridge br-tenant found
+11/08/2018 03:11:18 PM INFO: No jumphost interface exists on bridge br-tenant
+11/08/2018 03:11:18 PM DEBUG: Bridge br-tenant found
+11/08/2018 03:11:18 PM INFO: Removing bridge: br-tenant
+11/08/2018 03:11:18 PM DEBUG: Bridge destroyed
+11/08/2018 03:11:18 PM DEBUG: Bridge ifcfg file not found
+11/08/2018 03:11:18 PM INFO: Cleaning Jump Host Network config for network external
+11/08/2018 03:11:18 PM DEBUG: Detaching interfaces from bridge on network: external
+11/08/2018 03:11:18 PM DEBUG: Bridge br-external found
+11/08/2018 03:11:18 PM DEBUG: Interface found: enp2s0
+11/08/2018 03:11:18 PM DEBUG: Original interface file found: /etc/sysconfig/network-scripts/ifcfg-enp2s0.orig
+11/08/2018 03:11:18 PM INFO: Restarting Linux networking
+11/08/2018 03:11:20 PM DEBUG: Bridge br-external found
+11/08/2018 03:11:20 PM INFO: Removing bridge: br-external
+11/08/2018 03:11:20 PM DEBUG: Bridge destroyed
+11/08/2018 03:11:20 PM DEBUG: Bridge ifcfg file removed: /etc/sysconfig/network-scripts/ifcfg-br-external
+11/08/2018 03:11:20 PM INFO: Cleaning Jump Host Network config for network storage
+11/08/2018 03:11:20 PM DEBUG: Detaching interfaces from bridge on network: storage
+11/08/2018 03:11:20 PM DEBUG: Bridge br-storage found
+11/08/2018 03:11:20 PM INFO: No jumphost interface exists on bridge br-storage
+11/08/2018 03:11:20 PM DEBUG: Bridge br-storage found
+11/08/2018 03:11:20 PM INFO: Removing bridge: br-storage
+11/08/2018 03:11:20 PM DEBUG: Bridge destroyed
+11/08/2018 03:11:20 PM DEBUG: Bridge ifcfg file not found
+11/08/2018 03:11:20 PM INFO: Cleaning Jump Host Network config for network api
+11/08/2018 03:11:20 PM DEBUG: Detaching interfaces from bridge on network: api
+11/08/2018 03:11:20 PM DEBUG: Bridge br-api not found
+11/08/2018 03:11:20 PM DEBUG: Bridge br-api not found
+11/08/2018 03:11:20 PM DEBUG: Destroying all virsh networks
+11/08/2018 03:11:20 PM DEBUG: Destroying virsh network: external
+11/08/2018 03:11:20 PM DEBUG: Destroying virsh network: storage
+11/08/2018 03:11:20 PM DEBUG: Destroying virsh network: admin
+11/08/2018 03:11:20 PM DEBUG: Destroying virsh network: tenant
+11/08/2018 03:11:21 PM INFO: Removing any stack pub keys from root authorized keys
+11/08/2018 03:11:21 PM WARNING: Key file does not exist: 
+11/08/2018 03:11:21 PM INFO: Apex clean complete!
+11/09/2018 04:20:34 AM INFO: Destroying all Apex VMs
+11/09/2018 04:20:34 AM DEBUG: Cleaning all network config
+11/09/2018 04:20:34 AM INFO: Cleaning Jump Host Network config for network admin
+11/09/2018 04:20:34 AM DEBUG: Detaching interfaces from bridge on network: admin
+11/09/2018 04:20:34 AM DEBUG: Bridge br-admin not found
+11/09/2018 04:20:34 AM DEBUG: Bridge br-admin not found
+11/09/2018 04:20:34 AM INFO: Cleaning Jump Host Network config for network tenant
+11/09/2018 04:20:35 AM DEBUG: Detaching interfaces from bridge on network: tenant
+11/09/2018 04:20:35 AM DEBUG: Bridge br-tenant not found
+11/09/2018 04:20:35 AM DEBUG: Bridge br-tenant not found
+11/09/2018 04:20:35 AM INFO: Cleaning Jump Host Network config for network external
+11/09/2018 04:20:35 AM DEBUG: Detaching interfaces from bridge on network: external
+11/09/2018 04:20:35 AM DEBUG: Bridge br-external not found
+11/09/2018 04:20:35 AM DEBUG: Bridge br-external not found
+11/09/2018 04:20:35 AM INFO: Cleaning Jump Host Network config for network storage
+11/09/2018 04:20:35 AM DEBUG: Detaching interfaces from bridge on network: storage
+11/09/2018 04:20:35 AM DEBUG: Bridge br-storage not found
+11/09/2018 04:20:35 AM DEBUG: Bridge br-storage not found
+11/09/2018 04:20:35 AM INFO: Cleaning Jump Host Network config for network api
+11/09/2018 04:20:35 AM DEBUG: Detaching interfaces from bridge on network: api
+11/09/2018 04:20:35 AM DEBUG: Bridge br-api not found
+11/09/2018 04:20:35 AM DEBUG: Bridge br-api not found
+11/09/2018 04:20:35 AM DEBUG: Destroying all virsh networks
+11/09/2018 04:20:35 AM INFO: Removing any stack pub keys from root authorized keys
+11/09/2018 04:20:35 AM WARNING: Key file does not exist: 
+11/09/2018 04:20:35 AM INFO: Apex clean complete!
