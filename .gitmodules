@@ -1,3 +1,12 @@
 [submodule "cloud/sfc-random"]
 	path = cloud/sfc-random
 	url = https://github.com/trozet/sfc-random.git
+[submodule "cloud/sfc"]
+	path = cloud/sfc
+	url = https://github.com/opnfv/sfc.git
+[submodule "cloud/apex"]
+	path = cloud/apex
+	url = https://github.com/opnfv/apex.git
+[submodule "cloud/fuel"]
+	path = cloud/fuel
+	url = https://github.com/opnfv/fuel.git
