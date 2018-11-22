@@ -1,7 +1,7 @@
 #!/bin/bash 
 
 # change the switch operating mode to ovs
-sudo sed -i 's/^picos_start\=xorpplus/picos_start\=ovs/' picos_start.conf
+sudo sed -i 's/^picos_start\=xorpplus/picos_start\=ovs/' /etc/picos/picos_start.conf
 
 # restart picos 
 sudo /etc/init.d/picos restart
