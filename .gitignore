@@ -4,3 +4,4 @@
 *.pyc
 *.db
 .idea
+.DS_Store
