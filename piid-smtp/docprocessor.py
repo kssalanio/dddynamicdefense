@@ -130,7 +130,7 @@ class DocumentProcessor(object):
 
         return False
 
-    def process_smtp(self, smtp_doc):
+    def redact_smtp(self, smtp_doc):
 
         new_smtp_doc = []
 
