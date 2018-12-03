@@ -8,7 +8,9 @@ import heapq
 
 
 class DocumentProcessor(object):
-
+    """
+        Object the preloads NLP model/s and lookup tables
+    """
     def __init__(self, config):
         self.spacy_model_name           = config.get("models", "spacy_model")
         self.unicode_reference_words    = unicode(config.get("models", "reference_words")).split(",")
@@ -151,6 +153,29 @@ class DocumentProcessor(object):
             new_smtp_doc.append(new_msg_line)
 
         return new_smtp_doc
+
+
+    def detect_smtp(self, smtp_doc):
+        for msg_line in smtp_doc:
+            print("Evaluating: [" + str(msg_line) +"] for tokens: ")
+            udoc_tokenized = self.nlp_model(msg_line)
+
+            # NER Method ID and redaction:
+            new_msg_line = ""
+            cursor = 0
+            for ent in udoc_tokenized.ents:
+                if ent.label_ in self.reference_entities:
+                    # Handle detected entities
+                    print(ent.text, ent.start_char, ent.end_char, ent.label_)
+
+                    # TODO: Lookup table evaluation
+
+                    # If PII:
+                    return True
+
+        # If no detected PII:
+        return False
+
 
     def clean_json(self, json_doc):
         print "Cleaning JSON..."
