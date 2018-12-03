@@ -11,7 +11,7 @@ from decimal import Decimal
 
 class PacketSniffer(threading.Thread):
 
-    def __init__(self, config, packet_buffer_object, app_protocol="smtp"):
+    def __init__(self, config, callback_object, app_protocol="smtp"):
         super(PacketSniffer, self).__init__()
 
         self.daemon = True
@@ -21,7 +21,7 @@ class PacketSniffer(threading.Thread):
         ports = utils.get_ports(config, app_protocol)
         self.packet_filter_string = utils.create_filter_string("tcp", ports)
         self.ifname = config.get("network", "ifname")
-        self.packet_buffer = packet_buffer_object
+        self.callback_object = callback_object
 
     def is_not_outgoing(self, pkt):
         # return pkt[Ether].src != utils.get_hw_addr(self.ifname)
@@ -32,7 +32,17 @@ class PacketSniffer(threading.Thread):
 
     def sniffer_callback(self, pkt):
         if "Ether" in pkt and "IP" in pkt and "TCP" in pkt:
-            self.packet_buffer.append(pkt)
+            #self.packet_buffer.append(pkt)
+            #TODO: extract payload
+
+            # Debug check for payload
+            if packet[TCP].payload:
+#                print("[PAYLOAD]:\n%s" % packet[TCP].payload)
+                payload = unicode(pkt[TCP].payload)
+                self.callback_object.process_packet_payload(payload)
+            else:
+                print("Packet does not have payload!: %s" % packet.summary())
+
 
     def print_packet(self, pkt):
         ip_layer = pkt.getlayer(IP)
