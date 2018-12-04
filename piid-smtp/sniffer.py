@@ -59,25 +59,20 @@ class PacketSniffer(threading.Thread):
 
     def run(self):
         print "Starting Packet Sniffer on [ %s ]:[ %s ]..." % (self.ifname, self.packet_filter_string)
-        # self.socket = conf.L2listen(
-        #     type=ETH_P_ALL,
-        #     iface=self.ifname,
-        #     filter=self.packet_filter_string
-        # )
-        #
-        # sniff(
-        #     opened_socket=self.socket,
-        #     filter=self.packet_filter_string,
-        #     lfilter=self.is_not_outgoing,
-        #     # prn=self.print_packet,
-        #     prn=self.sniffer_callback,
-        #     stop_filter=self.should_stop_sniffer
-        # )
-        sniff(iface=self.ifname,
-              prn=self.sniffer_callback,
-              filter=self.packet_filter_string,
-              lfilter=self.is_not_outgoing,
-              store=0)
+        self.socket = conf.L2listen(
+            type=ETH_P_ALL,
+            iface=self.ifname,
+            filter=self.packet_filter_string
+        )
+
+        sniff(
+            opened_socket=self.socket,
+            filter=self.packet_filter_string,
+            lfilter=self.is_outgoing,
+            # prn=self.print_packet,
+            prn=self.sniffer_callback,
+            stop_filter=self.should_stop_sniffer
+        )
 
     def join(self, timeout=None):
         self.stop_sniffer.set()
