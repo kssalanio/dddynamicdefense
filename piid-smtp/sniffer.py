@@ -57,14 +57,14 @@ class PacketSniffer(threading.Thread):
         print "Starting Packet Sniffer on [ %s ]:[ %s ]..." % (self.ifname, self.packet_filter_string)
         self.socket = conf.L2listen(
             type=ETH_P_ALL,
-            iface=self.ifname
+            iface=self.ifname,
+        lfilter = self.is_not_outgoing
         )
 
         sniff(
             opened_socket=self.socket,
             # prn=self.print_packet,
             filter=self.packet_filter_string,
-            lfilter=self.is_not_outgoing,
             prn=self.sniffer_callback,
             stop_filter=self.should_stop_sniffer
         )
