@@ -8,7 +8,7 @@ class SMTPProcessor(object):
     def __init__(self, config):
 
         self.piid_processor = docprocessor.DocumentProcessor(config)
-        self.sniffer = sniffer.PacketSniffer(config, self.piid_processor, app_protocol="smtp")
+        self.sniffer = sniffer.PacketSniffer(config, self, app_protocol="smtp")
         self.pii_count = 0
 
         # TODO:Fix to interface specced in config.ini
