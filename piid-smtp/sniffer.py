@@ -30,8 +30,8 @@ class PacketSniffer(threading.Thread):
     def is_outgoing(self, pkt):
         return pkt[Ether].src.lower() == get_if_hwaddr(conf.iface).lower()
 
-    def sniffer_callback(self, pkt):
-        if "Ether" in pkt and "IP" in pkt and "TCP" in pkt:
+    def sniffer_callback(self, packet):
+        if "Ether" in packet and "IP" in packet and "TCP" in packet:
             #self.packet_buffer.append(pkt)
             #TODO: extract payload
 
