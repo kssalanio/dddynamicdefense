@@ -73,7 +73,11 @@ class PacketSniffer(threading.Thread):
         #     prn=self.sniffer_callback,
         #     stop_filter=self.should_stop_sniffer
         # )
-        sniff(iface=self.ifname, prn=self.sniffer_callback, filter=self.packet_filter_string, store=0)
+        sniff(iface=self.ifname,
+              prn=self.sniffer_callback,
+              filter=self.packet_filter_string,
+              lfilter=self.is_not_outgoing,
+              store=0)
 
     def join(self, timeout=None):
         self.stop_sniffer.set()
