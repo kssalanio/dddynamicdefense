@@ -46,8 +46,7 @@ class PacketSniffer(threading.Thread):
             # print(pkt.summary())
 
             if pkt[TCP].payload:
-                print("[PAYLOAD]:\n%s" % pkt[TCP].payload)
-                # payload = unicode(pkt[TCP].payload)
+                # print("[PAYLOAD]:\n%s" % pkt[TCP].payload)
                 self.callback_object.process_packet(pkt)
 
             # Ignore packets without payload
