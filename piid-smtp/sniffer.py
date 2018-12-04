@@ -31,17 +31,20 @@ class PacketSniffer(threading.Thread):
         return pkt[Ether].src.lower() == get_if_hwaddr(conf.iface).lower()
 
     def sniffer_callback(self, pkt):
-        if "Ether" in pkt and "IP" in pkt and "TCP" in pkt:
-            #self.packet_buffer.append(pkt)
-            #TODO: extract payload
+        try:
+            if "Ether" in pkt and "IP" in pkt and "TCP" in pkt:
+                #self.packet_buffer.append(pkt)
+                #TODO: extract payload
 
-            # Debug check for payload
-            if pkt[TCP].payload:
-#                print("[PAYLOAD]:\n%s" % pkt[TCP].payload)
-                # payload = unicode(pkt[TCP].payload)
-                self.callback_object.process_packet(pkt)
-            else:
-                print("Packet does not have payload!: %s" % pkt.summary())
+                # Debug check for payload
+                if pkt[TCP].payload:
+    #                print("[PAYLOAD]:\n%s" % pkt[TCP].payload)
+                    # payload = unicode(pkt[TCP].payload)
+                    self.callback_object.process_packet(pkt)
+                else:
+                    print("Packet does not have payload!: %s" % pkt.summary())
+        except IndexError:
+            pass
 
 
     def print_packet(self, pkt):
