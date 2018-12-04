@@ -38,7 +38,7 @@ class PacketSniffer(threading.Thread):
 
                 # Debug check for payload
                 if pkt[TCP].payload:
-    #                print("[PAYLOAD]:\n%s" % pkt[TCP].payload)
+                    print("[PAYLOAD]:\n%s" % pkt[TCP].payload)
                     # payload = unicode(pkt[TCP].payload)
                     self.callback_object.process_packet(pkt)
                 else:
@@ -57,14 +57,14 @@ class PacketSniffer(threading.Thread):
         print "Starting Packet Sniffer on [ %s ]:[ %s ]..." % (self.ifname, self.packet_filter_string)
         self.socket = conf.L2listen(
             type=ETH_P_ALL,
-            iface=self.ifname,
-        lfilter = self.is_not_outgoing
+            iface=self.ifname
         )
 
         sniff(
             opened_socket=self.socket,
             # prn=self.print_packet,
             filter=self.packet_filter_string,
+            lfilter=self.is_not_outgoing,
             prn=self.sniffer_callback,
             stop_filter=self.should_stop_sniffer
         )
