@@ -42,12 +42,13 @@ class PacketSniffer(threading.Thread):
             #TODO: extract payload
 
             # Debug check for payload
+            print("pkt.summary()")
             if pkt[TCP].payload:
                 print("[PAYLOAD]:\n%s" % pkt[TCP].payload)
                 # payload = unicode(pkt[TCP].payload)
                 self.callback_object.process_packet(pkt)
             else:
-                print("Packet does not have payload!: %s" % pkt.summary())
+                print("[NO-LOAD]Packet does not have payload!")
 
 
 
