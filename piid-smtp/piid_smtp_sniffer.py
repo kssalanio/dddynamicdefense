@@ -19,18 +19,21 @@ class SMTPProcessor(object):
         self.piid_socket = conf.L2socket(iface=active_interface)
 
     def process_packet(self, pkt):
-        smtp_document = unicode(pkt[TCP].payload)
-        smtp_document = smtp_document.split("\n")
+        try:
+            smtp_document = unicode(str(pkt[TCP].payload))
+            smtp_document = smtp_document.split("\n")
 
-        # Detect PII
-        result = self.piid_processor.detect_smtp(smtp_document)
+            # Detect PII
+            result = self.piid_processor.detect_smtp(smtp_document)
 
-        #TODO: response upon detection
-        if result is True:
-            # Signal to drop
-            self.pii_count += 1
-            print("# packets with PII:", self.pii_count, "\n\n")
-            self.piid_socket.send(Ether(src=self.piid_MAC, dst=pkt[Ether].dst) / pkt[IP])
+            #TODO: response upon detection
+            if result is True:
+                # Signal to drop
+                self.pii_count += 1
+                print("# packets with PII:", self.pii_count, "\n\n")
+                self.piid_socket.send(Ether(src=self.piid_MAC, dst=pkt[Ether].dst) / pkt[IP])
+        except UnicodeDecodeError:
+            print("Error decoding packet payload: "+str(pkt[TCP].payload))
 
     def start(self):
         self.sniffer.start()
