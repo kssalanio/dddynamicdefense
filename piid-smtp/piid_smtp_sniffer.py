@@ -18,8 +18,8 @@ class SMTPProcessor(object):
 
         self.piid_socket = conf.L2socket(iface=active_interface)
 
-    def process_packet_payload(self, packet_payload):
-        smtp_document = packet_payload.split("\n")
+    def process_packet(self, packet):
+        smtp_document = unicode(packet[TCP].payload).split("\n")
 
         # Detect PII
         result = self.piid_processor.detect_smtp(smtp_document)
@@ -33,6 +33,7 @@ class SMTPProcessor(object):
 
     def start(self):
         self.sniffer.start()
+        print ("")
         try:
             while True:
                 time.sleep(500)

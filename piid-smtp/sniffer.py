@@ -38,8 +38,8 @@ class PacketSniffer(threading.Thread):
             # Debug check for payload
             if packet[TCP].payload:
 #                print("[PAYLOAD]:\n%s" % packet[TCP].payload)
-                payload = unicode(pkt[TCP].payload)
-                self.callback_object.process_packet_payload(payload)
+                # payload = unicode(pkt[TCP].payload)
+                self.callback_object.process_packet(packet)
             else:
                 print("Packet does not have payload!: %s" % packet.summary())
 
