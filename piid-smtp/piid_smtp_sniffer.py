@@ -18,8 +18,8 @@ class SMTPProcessor(object):
 
         self.piid_socket = conf.L2socket(iface=active_interface)
 
-    def process_packet(self, packet):
-        smtp_document = unicode(packet[TCP].payload).split("\n")
+    def process_packet(self, pkt):
+        smtp_document = unicode(pkt[TCP].payload).split("\n")
 
         # Detect PII
         result = self.piid_processor.detect_smtp(smtp_document)
@@ -29,7 +29,7 @@ class SMTPProcessor(object):
             # Signal to drop
             self.pii_count += 1
             print("# packets with PII:", self.pii_count, "\n\n")
-            self.piid_socket.send(Ether(src=self.piid_MAC, dst=packet[Ether].dst) / packet[IP])
+            self.piid_socket.send(Ether(src=self.piid_MAC, dst=pkt[Ether].dst) / pkt[IP])
 
     def start(self):
         self.sniffer.start()
