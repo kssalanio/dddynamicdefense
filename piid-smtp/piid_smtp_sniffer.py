@@ -34,8 +34,7 @@ class SMTPProcessor(object):
                 print("# packets with PII:", self.pii_count, "\n\n")
                 self.piid_socket.send(Ether(src=self.piid_MAC, dst=pkt[Ether].dst) / pkt[IP])
         except UnicodeDecodeError:
-            print("Error decoding packet payload: "+str(pkt[TCP].payload))
-            sys.exit(1)
+            print("Error decoding packet payload. Skipping...")
 
     def start(self):
         self.sniffer.start()
