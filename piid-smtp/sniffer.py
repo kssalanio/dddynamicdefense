@@ -68,7 +68,7 @@ class PacketSniffer(threading.Thread):
 
         sniff(
             opened_socket=self.socket,
-            filter=self.packet_filter_string,
+            #filter=self.packet_filter_string,
             lfilter=self.is_not_outgoing,
             # prn=self.print_packet,
             prn=self.sniffer_callback,
