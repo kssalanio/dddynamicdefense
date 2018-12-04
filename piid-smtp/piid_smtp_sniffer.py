@@ -34,7 +34,7 @@ class SMTPProcessor(object):
 
     def start(self):
         self.sniffer.start()
-        print ("")
+        print ("Sniffer started")
         try:
             while True:
                 time.sleep(500)
