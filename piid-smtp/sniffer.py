@@ -42,7 +42,7 @@ class PacketSniffer(threading.Thread):
             #TODO: extract payload
 
             # Debug check for payload
-            print("pkt.summary()")
+            print(pkt.summary())
             if pkt[TCP].payload:
                 print("[PAYLOAD]:\n%s" % pkt[TCP].payload)
                 # payload = unicode(pkt[TCP].payload)
