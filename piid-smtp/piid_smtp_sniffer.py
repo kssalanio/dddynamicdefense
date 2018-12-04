@@ -3,6 +3,7 @@ from scapy.all import *
 import sniffer, docprocessor
 from pprint import pprint
 import time
+import sys
 
 class SMTPProcessor(object):
     def __init__(self, config):
@@ -34,6 +35,7 @@ class SMTPProcessor(object):
                 self.piid_socket.send(Ether(src=self.piid_MAC, dst=pkt[Ether].dst) / pkt[IP])
         except UnicodeDecodeError:
             print("Error decoding packet payload: "+str(pkt[TCP].payload))
+            sys.exit(1)
 
     def start(self):
         self.sniffer.start()
