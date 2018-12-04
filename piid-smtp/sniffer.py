@@ -25,26 +25,30 @@ class PacketSniffer(threading.Thread):
 
     def is_not_outgoing(self, pkt):
         # return pkt[Ether].src != utils.get_hw_addr(self.ifname)
-        return pkt[Ether].src.lower() != get_if_hwaddr(conf.iface).lower()
+        try:
+            return pkt[Ether].src.lower() != get_if_hwaddr(conf.iface).lower()
+        except IndexError:
+            return False
 
     def is_outgoing(self, pkt):
-        return pkt[Ether].src.lower() == get_if_hwaddr(conf.iface).lower()
+        try:
+            return pkt[Ether].src.lower() == get_if_hwaddr(conf.iface).lower()
+        except IndexError:
+            return False
 
     def sniffer_callback(self, pkt):
-        try:
-            if "Ether" in pkt and "IP" in pkt and "TCP" in pkt:
-                #self.packet_buffer.append(pkt)
-                #TODO: extract payload
+        if "Ether" in pkt and "IP" in pkt and "TCP" in pkt:
+            #self.packet_buffer.append(pkt)
+            #TODO: extract payload
 
-                # Debug check for payload
-                if pkt[TCP].payload:
-                    print("[PAYLOAD]:\n%s" % pkt[TCP].payload)
-                    # payload = unicode(pkt[TCP].payload)
-                    self.callback_object.process_packet(pkt)
-                else:
-                    print("Packet does not have payload!: %s" % pkt.summary())
-        except IndexError:
-            pass
+            # Debug check for payload
+            if pkt[TCP].payload:
+                print("[PAYLOAD]:\n%s" % pkt[TCP].payload)
+                # payload = unicode(pkt[TCP].payload)
+                self.callback_object.process_packet(pkt)
+            else:
+                print("Packet does not have payload!: %s" % pkt.summary())
+
 
 
     def print_packet(self, pkt):
