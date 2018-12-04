@@ -16,7 +16,6 @@ class DocumentProcessor(object):
         self.unicode_reference_words    = unicode(config.get("models", "reference_words")).split(",")
         self.reference_entities         = map(unicode, config.get("models", "reference_entities").split(","))
 
-        # TODO: Move to config.ini or somewhere else
         self.heap_k                     = config.getint("models", "top_k")
         self.detection_threshold        = config.getfloat("models", "word_similarity_threshold")
 
