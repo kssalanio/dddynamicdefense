@@ -33,6 +33,16 @@ class SMTPProcessor(object):
 
     def start(self):
         self.sniffer.start()
+        try:
+            while True:
+                time.sleep(500)
+        except KeyboardInterrupt:
+            print("[*] Stop sniffing")
+
+            self.sniffer.join(timeout=2.0)
+
+            if self.sniffer.isAlive():
+                self.sniffer.socket.close()
 
 
 if __name__ == '__main__':
