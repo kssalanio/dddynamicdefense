@@ -37,7 +37,8 @@ class PacketSniffer(threading.Thread):
             return False
 
     def sniffer_callback(self, pkt):
-        if "Ether" in pkt and "IP" in pkt and "TCP" in pkt:
+        #if "Ether" in pkt and "IP" in pkt and "TCP" in pkt:
+        if "TCP" in pkt:
             #self.packet_buffer.append(pkt)
             #TODO: extract payload
 
