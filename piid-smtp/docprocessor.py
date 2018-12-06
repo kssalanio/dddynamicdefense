@@ -1,5 +1,6 @@
 from pprint import pprint
 from decimal import Decimal
+from csv_lookup import *
 import time
 import spacy
 import ujson
@@ -12,12 +13,26 @@ class DocumentProcessor(object):
         Object the preloads NLP model/s and lookup tables
     """
     def __init__(self, config):
+        self.config = config
         self.spacy_model_name           = config.get("models", "spacy_model")
         self.unicode_reference_words    = unicode(config.get("models", "reference_words")).split(",")
         self.reference_entities         = map(unicode, config.get("models", "reference_entities").split(","))
 
         self.heap_k                     = config.getint("models", "top_k")
         self.detection_threshold        = config.getfloat("models", "word_similarity_threshold")
+
+
+        self.enable_lookup              = config.getbool("csv", "enable_lookup")
+        if self.enable_lookup:
+            self.csv_delimiter          = config.getbool("csv", "delimiter")
+            self.names_lookup_table     = CSVLookupTable(config.get("models", "names"),
+                                                         config.get("models", "names_headers"),
+                                                         delimiter=self.csv_delimiter,
+                                                         index_column=config.get("models", "names_index"))
+            self.emails_lookup_table = CSVLookupTable(config.get("models", "emails"),
+                                                      config.get("models", "emails_headers"),
+                                                      delimiter=self.csv_delimiter,
+                                                      index_column=config.get("models", "emails_index"))
 
         time_start = time.time()
         print "Loading Spacy Model: %s" % self.spacy_model_name
@@ -168,6 +183,13 @@ class DocumentProcessor(object):
                     print(ent.text, ent.start_char, ent.end_char, ent.label_)
 
                     # TODO: Lookup table evaluation
+                    if self.enable_lookup:
+                        if ent.label_ == u"PERSON":
+                            pass
+                        elif ent.label_ == u"MONEY":
+                            pass
+                        elif ent.like_email:
+                            pass
 
                     # If PII:
                     return True
