@@ -44,6 +44,7 @@ class CSVLookupTable(object):
         :param filepath: path to csv file
         :param csv_dtypes: data types of csv headers
         :param delimiter: delimiter or separator to use, defaults to space
+        :param index_column: column to index for lookup
         :return: dataframe for lookup
         """
 
@@ -53,6 +54,7 @@ class CSVLookupTable(object):
                                   dtype=create_dtype_dict(csv_dtypes), )
 
         # Index
+        self.index_column= index_column
         if index_column is not None:
             self.csv_df.set_index(index_column)
 
