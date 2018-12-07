@@ -13,6 +13,9 @@ class DocumentProcessor(object):
         Object that preloads NLP model/s and lookup tables
     """
     def __init__(self, config):
+        """
+        :param config: ConfigParser object of config.ini file
+        """
         self.config = config
         self.spacy_model_name           = config.get("models", "spacy_model")
         self.unicode_reference_words    = unicode(config.get("models", "reference_words")).split(",")
@@ -41,6 +44,12 @@ class DocumentProcessor(object):
         print "NLP Loading Time: %s\n" % str(time_end - time_start)
 
     def similarity_top_k_spacy_model(self, json_doc, similarity_threshold=0.0, spacy_model = 'en_core_web_md'):
+        """
+        :param json_doc: JSON document to evaluate
+        :param similarity_threshold: Similarity threshold number
+        :param spacy_model: Spacy NLP model to use for cimputation
+        :return: None
+        """
 
         print "Starting Top K using %s..." % self.spacy_model_name
 
@@ -62,6 +71,12 @@ class DocumentProcessor(object):
         print "JSON Key Similarity Top 5 Computation Time: %s\n" % str(time_end - time_start)
 
     def extract_labeled_entities(self, doc, entity_labels, extract_emails=True):
+        """
+        :param doc: unicode document to evaluate
+        :param entity_labels: selected Spacy entity labels to extract
+        :param extract_emails: include emails in extraction?
+        :return: tokens of extracted entities
+        """
         # merge entities and noun chunks into one token
         spans = list(doc.ents) + list(doc.noun_chunks)
         for span in spans:
@@ -74,7 +89,11 @@ class DocumentProcessor(object):
         return extracted_ents
 
     def compute_similarity_top_k_json_keys_only(self, json_doc, heap_k=5):
-
+        """
+        :param json_doc: JSON document to evaluate
+        :param heap_k: value of K in top K
+        :return: a heap dictionary of top K tokens
+        """
         json_dict = ujson.loads(json_doc)
         unicode_json_keys = unicode(" ".join(json_dict.iterkeys()))
 
@@ -147,6 +166,12 @@ class DocumentProcessor(object):
         return False
 
     def redact_smtp(self, smtp_doc):
+        """
+        PII Redaction of SMTP document
+
+        :param smtp_doc: SMTP email document
+        :return: redacted version of smtp_doc
+        """
 
         new_smtp_doc = []
 
@@ -168,8 +193,14 @@ class DocumentProcessor(object):
 
         return new_smtp_doc
 
-
     def detect_smtp(self, smtp_doc):
+        """
+        Detection of PII in SMTP document.
+        Makes use of lookup tables if self.enable_lookup is set to True
+
+        :param smtp_doc: SMTP email document
+        :return: True if PII is detected in SMTP, False otherwise
+        """
         for msg_line in smtp_doc:
             print("Evaluating: [" + str(msg_line) +"] for tokens: ")
             udoc_tokenized = self.nlp_model(msg_line)
@@ -201,6 +232,13 @@ class DocumentProcessor(object):
 
 
     def clean_json(self, json_doc):
+        """
+        Cleans symbols indicated in json_syms variable from
+        JSON document by replacing them with whitespaces
+
+        :param json_doc: JSON document
+        :return: cleaned JSON document
+        """
         print "Cleaning JSON..."
         json_syms = '"\':;{}[]'
         time_start = time.time()
