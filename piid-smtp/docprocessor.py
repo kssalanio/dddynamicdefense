@@ -10,7 +10,7 @@ import heapq
 
 class DocumentProcessor(object):
     """
-        Object the preloads NLP model/s and lookup tables
+        Object that preloads NLP model/s and lookup tables
     """
     def __init__(self, config):
         self.config = config
@@ -24,12 +24,12 @@ class DocumentProcessor(object):
 
         self.enable_lookup              = config.getbool("csv", "enable_lookup")
         if self.enable_lookup:
-            self.csv_delimiter          = config.getbool("csv", "delimiter")
-            self.names_lookup_table     = CSVLookupTable(config.get("models", "names"),
+            self.csv_delimiter          = config.get("csv", "delimiter")
+            self.csv_names              = CSVLookupTable(config.get("models", "names"),
                                                          config.get("models", "names_headers"),
                                                          delimiter=self.csv_delimiter,
                                                          index_column=config.get("models", "names_index"))
-            self.emails_lookup_table = CSVLookupTable(config.get("models", "emails"),
+            self.csv_emails             = CSVLookupTable(config.get("models", "emails"),
                                                       config.get("models", "emails_headers"),
                                                       delimiter=self.csv_delimiter,
                                                       index_column=config.get("models", "emails_index"))
@@ -182,17 +182,19 @@ class DocumentProcessor(object):
                     # Handle detected entities
                     print(ent.text, ent.start_char, ent.end_char, ent.label_)
 
-                    # TODO: Lookup table evaluation
+                    # Lookup table evaluation
                     if self.enable_lookup:
                         if ent.label_ == u"PERSON":
-                            pass
+                            if self.csv_names.lookup(self.csv_names.index_column, ent.text):
+                                return True
                         elif ent.label_ == u"MONEY":
-                            pass
+                            return True
                         elif ent.like_email:
-                            pass
-
-                    # If PII:
-                    return True
+                            if self.csv_emails.lookup(self.csv_emails.index_column, ent.text):
+                                return True
+                    else:
+                        # If PII:
+                        return True
 
         # If no detected PII:
         return False
