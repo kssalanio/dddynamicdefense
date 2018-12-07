@@ -26,6 +26,9 @@ EX_TEMPFAIL = 75
 EX_UNAVAILABLE = 69
 
 class SMTPFilterRelayServer:
+    """
+    An After Queue Relay Server PII Filter for SMTP emails
+    """
     def __init__(self, listen_addr, remote_addr, smtp_filter):
         self.local_addr = listen_addr
         self.remote_addr = remote_addr
@@ -39,14 +42,15 @@ class SMTPFilterRelayServer:
         self.accepted = {}
 
     def start(self):
-        #NOTE: Main start thread
+        """
+        Main start function
+        """
         #self.start_blocking()
         self.start_nonblocking()
 
     def start_nonblocking(self):
         """
-        Non blocking
-        :return:
+        Non blocking start function
         """
         self.srv_socket.setblocking(0)
         self.srv_socket.listen(5)
@@ -74,6 +78,9 @@ class SMTPFilterRelayServer:
                     self.accepted[tclient.getName()] = tclient
 
     def start_blocking(self):
+        """
+        Blocking start function
+        """
         self.srv_socket.listen(5)
         print("Started blocking socket. Listening on " + str(self.local_addr))
 
