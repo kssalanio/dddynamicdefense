@@ -6,6 +6,7 @@ import spacy
 import ujson
 import string
 import heapq
+import re
 
 
 class DocumentProcessor(object):
@@ -36,6 +37,10 @@ class DocumentProcessor(object):
                                                       config.get("models", "emails_headers"),
                                                       delimiter=self.csv_delimiter,
                                                       index_column=config.get("models", "emails_index"))
+
+        # Phone number pattern from Sharleen's code
+        self.phone_regex = re.compile(
+            r"^([+]code)?((38[{8,9}|0])|(34[{7-9}|0])|(36[6|8|0])|(33[{3-9}|0])|32[{8,9}\))([\d]{7})$")
 
         time_start = time.time()
         print "Loading Spacy Model: %s" % self.spacy_model_name
@@ -212,6 +217,10 @@ class DocumentProcessor(object):
                 if ent.label_ in self.reference_entities:
                     # Handle detected entities
                     print(ent.text, ent.start_char, ent.end_char, ent.label_)
+
+                    # Phone number regex match
+                    if self.phone_regex.match(ent.text):
+                        return True
 
                     # Lookup table evaluation
                     if self.enable_lookup:
