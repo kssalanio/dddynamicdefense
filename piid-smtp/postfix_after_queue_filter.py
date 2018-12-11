@@ -140,7 +140,7 @@ class ThreadClient(threading.Thread):
         dot (.) on en empty line is encountered. This method is useful if you
         want to process the whole body.
         """
-        filter_result = self.server.smtp_filter.process_smtp(self.mbuffer)
+        filter_result = self.server.smtp_filter.redact_smtp(self.mbuffer)
 
         # NOTE: Original flush send
         for line in filter_result:
