@@ -140,7 +140,8 @@ class ThreadClient(threading.Thread):
         dot (.) on en empty line is encountered. This method is useful if you
         want to process the whole body.
         """
-        filter_result = self.server.smtp_filter.redact_smtp(self.mbuffer)
+        #filter_result = self.server.smtp_filter.redact_smtp(self.mbuffer)
+        filter_result = self.server.smtp_filter.redact_smtp_test(self.mbuffer)
 
         # NOTE: Original flush send
         for line in filter_result:
@@ -150,7 +151,6 @@ class ThreadClient(threading.Thread):
             self.remote.send(mline.encode())
 
         # NOTE: New flush send
-
 
         # Append example:
         #toto = "---{0}{0}Un peu de pub{0}".format(CRLF)
