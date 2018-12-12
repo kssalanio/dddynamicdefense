@@ -18,3 +18,5 @@ names_index=NAME
 emails=/Users/ken/Documents/d5_sample_data/csv/emails.csv
 emails_headers={"EMAIL": "str", "NAME": "str", "CONTACT_NUMBER": "str"}
 emails_index=EMAIL
+[test]
+test_output_dir=/path/to/test/output/
