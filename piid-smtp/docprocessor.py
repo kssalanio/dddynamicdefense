@@ -7,6 +7,7 @@ import ujson
 import string
 import heapq
 import re
+import os
 
 
 class DocumentProcessor(object):
@@ -41,6 +42,10 @@ class DocumentProcessor(object):
         # Phone number pattern from Sharleen's code
         self.phone_regex = re.compile(
             r"^([+]code)?((38[{8,9}|0])|(34[{7-9}|0])|(36[6|8|0])|(33[{3-9}|0])|32[{8,9}\))([\d]{7})$")
+
+        self.test_output_dir = config.get("test", "output_dir")
+        self.test_email_counter = 0
+        self.test_email_zpad = 10
 
         time_start = time.time()
         print "Loading Spacy Model: %s" % self.spacy_model_name
@@ -196,6 +201,61 @@ class DocumentProcessor(object):
             new_msg_line += msg_line[cursor:-1]
             new_smtp_doc.append(new_msg_line)
 
+        return new_smtp_doc
+
+    def redact_smtp_test(self, smtp_doc):
+        """
+        PII Redaction of SMTP document
+        writes redaction details for test evaluation
+
+        :param smtp_doc: SMTP email document
+        :return: redacted version of smtp_doc
+        """
+
+        new_smtp_doc = []
+
+        # zero-padded email name
+        email_file_name_pfx = ''+str(self.test_email_counter)
+        email_file_name_pfx = email_file_name_pfx.rjust(self.test_email_zpad, '0')
+
+        # write the email body to a text file
+        with open(os.path.join(self.test_output_dir, email_file_name_pfx+'.txt'),
+                  'w') as test_email_file_txt:
+            test_email_file_txt.write(smtp_doc)
+
+        # open a file to write annotations
+        with open(os.path.join(self.test_output_dir, email_file_name_pfx + '.ann'),
+                  'w') as test_email_file_ann:
+
+            for msg_line in smtp_doc:
+                print("Evaluating: [" + str(msg_line) + "] for tokens: ")
+                udoc_tokenized = self.nlp_model(msg_line)
+
+                # NER Method ID and redaction:
+                new_msg_line = ""
+                cursor = 0
+                pii_token_count = 1
+
+                for ent in udoc_tokenized.ents:
+                    if ent.label_ in self.reference_entities:
+                        # TODO: evaluate tokens (e.g. regex phone # evaluation$
+                        print("T"+str(pii_token_count), ent.label_, ent.start_char, ent.end_char, ent.text)
+
+                        # TODO: write this to (.ann) file, along with original smtp_doc (.txt)
+                        # Annotation Format
+                        pii_ann_str = "%s,%s,%s,%s,%s\n".format("T"+str(pii_token_count), ent.label_, ent.start_char, ent.end_char, ent.texts)
+                        test_email_file_ann.write(pii_ann_str)
+
+                        pii_token_count += 1
+
+                        # Redaction step
+                        new_msg_line += msg_line[cursor:ent.start_char] + "[REDACTED]"
+                        cursor = ent.end_char
+
+                new_msg_line += msg_line[cursor:-1]
+                new_smtp_doc.append(new_msg_line)
+
+        self.test_email_counter += 1
         return new_smtp_doc
 
     def detect_smtp(self, smtp_doc):
