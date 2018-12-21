@@ -2,7 +2,10 @@
 #  -*-coding:UTF-8 -*
 
 """
+ 
+
  Original code from: https://code.activestate.com/recipes/577260-multi-threaded-smtp-proxy/
+ https://github.com/ActiveState/code/tree/master/recipes/Python/577260_Multi_threaded_SMTP_proxy
  Modified by Ken Salanio
 """
 
