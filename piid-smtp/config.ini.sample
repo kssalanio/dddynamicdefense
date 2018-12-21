@@ -8,4 +8,15 @@ spacy_model=en_core_web_md
 reference_words=name,address,email,number
 word_similarity_threshold=0.80
 top_k=0
-reference_entities=PERSON,MONEY,WORK_OF_ART
+reference_entities=PERSON,MONEY,WORK_OF_ART,CARDINAL
+[csv]
+enable_lookup=true
+delimiter=,
+names=/Users/ken/Documents/d5_sample_data/csv/dist_all_first_header.csv
+names_headers={"CUMULATIVE": "float", "FREQUENCY": "float", "NAME": "str", "RANK": "int"}
+names_index=NAME
+emails=/Users/ken/Documents/d5_sample_data/csv/emails.csv
+emails_headers={"EMAIL": "str", "NAME": "str", "CONTACT_NUMBER": "str"}
+emails_index=EMAIL
+[test]
+test_output_dir=/path/to/test/output/
