@@ -27,7 +27,7 @@ class DocumentProcessor(object):
         self.detection_threshold        = config.getfloat("models", "word_similarity_threshold")
 
 
-        self.enable_lookup              = config.getbool("csv", "enable_lookup")
+        self.enable_lookup              = config.getboolean("csv", "enable_lookup")
         if self.enable_lookup:
             self.csv_delimiter          = config.get("csv", "delimiter")
             self.csv_names              = CSVLookupTable(config.get("models", "names"),
@@ -221,7 +221,7 @@ class DocumentProcessor(object):
         # write the email body to a text file
         with open(os.path.join(self.test_output_dir, email_file_name_pfx+'.txt'),
                   'w') as test_email_file_txt:
-            test_email_file_txt.write(smtp_doc)
+            test_email_file_txt.write(str(smtp_doc))
 
         # open a file to write annotations
         with open(os.path.join(self.test_output_dir, email_file_name_pfx + '.ann'),
@@ -243,7 +243,7 @@ class DocumentProcessor(object):
 
                         # TODO: write this to (.ann) file, along with original smtp_doc (.txt)
                         # Annotation Format
-                        pii_ann_str = "%s,%s,%s,%s,%s\n".format("T"+str(pii_token_count), ent.label_, ent.start_char, ent.end_char, ent.texts)
+                        pii_ann_str = "%s,%s,%s,%s,%s\n".format("T"+str(pii_token_count), ent.label_, ent.start_char, ent.end_char, ent.text)
                         test_email_file_ann.write(pii_ann_str)
 
                         pii_token_count += 1
