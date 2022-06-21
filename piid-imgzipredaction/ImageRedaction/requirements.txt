@@ -16,7 +16,7 @@ idna==2.7
 itsdangerous==1.1.0
 Jinja2==2.10
 MarkupSafe==1.1.0
-numpy==1.15.4
+numpy==1.22.0
 opencv-python==3.4.3.18
 protobuf==3.6.1
 pyasn1==0.4.4
